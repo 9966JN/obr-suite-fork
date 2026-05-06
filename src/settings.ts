@@ -1285,6 +1285,7 @@ function moduleLabelKey(id: ModuleId): string {
     case "initiative": return lang === "zh" ? "先攻追踪" : "Initiative Tracker";
     case "search": return lang === "zh" ? "全局搜索" : "Global Search";
     case "dice": return lang === "zh" ? "骰子动效" : "Dice Roll Effect";
+    default: return id;
   }
 }
 

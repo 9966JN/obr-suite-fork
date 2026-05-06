@@ -448,7 +448,7 @@ const HIDDEN_TINT = 0.5;
 const ALPHA_CEILING = isHidden ? HIDDEN_TINT : 1;
 const LOSER_REST_ALPHA = 0.3;
 const LOSER_FADE_MS = 380;
-const baseAlpha = dice.map(() => ALPHA_CEILING);
+const baseAlpha: number[] = dice.map(() => ALPHA_CEILING);
 // `revealed[i]` flips false → true the moment a burst child becomes
 // visible (its parent's burst animation called revealBurstChild). Dice
 // that aren't burst children start true. The frame loop checks this
@@ -701,9 +701,10 @@ async function readPosOnce(): Promise<void> {
     document.documentElement.style.setProperty("--tx", `${sxScreen}px`);
     document.documentElement.style.setProperty("--ty", `${syScreen}px`);
     document.documentElement.style.setProperty("--vp-scale", String(scale));
-    const winSlot = flashSlot >= 0 && slots[flashSlot] ? slots[flashSlot] : { ox: 0, oy: 0, size: BASE_SIZE };
-    document.documentElement.style.setProperty("--flash-x", `${sxScreen + winSlot.ox * scale}px`);
-    document.documentElement.style.setProperty("--flash-y", `${syScreen + winSlot.oy * scale}px`);
+    const winSlot = flashSlot >= 0 ? slots[flashSlot] : undefined;
+    const flashWinSlot = winSlot ?? { ox: 0, oy: 0, size: BASE_SIZE };
+    document.documentElement.style.setProperty("--flash-x", `${sxScreen + flashWinSlot.ox * scale}px`);
+    document.documentElement.style.setProperty("--flash-y", `${syScreen + flashWinSlot.oy * scale}px`);
   } catch {}
   updateInFlight = false;
 }
