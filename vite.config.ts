@@ -17,6 +17,7 @@ import { resolve } from "path";
 // work — normaliseBase() strips any MSYS-prepended prefix.
 function normaliseBase(raw: string): string {
   let s = raw.trim();
+  if (s === "" || s === "/") return "/";
   // If MSYS prepended its root path, peel it back to the suite dir.
   const m = /\/(suite[^/]*)\/?$/.exec(s);
   if (m) return `/${m[1]}/`;
@@ -24,7 +25,7 @@ function normaliseBase(raw: string): string {
   if (!s.endsWith("/")) s = s + "/";
   return s;
 }
-const SUITE_BASE = normaliseBase(process.env.SUITE_BASE || "/suite/");
+const SUITE_BASE = normaliseBase(process.env.SUITE_BASE || "/");
 
 export default defineConfig(({ command }) => ({
   plugins:

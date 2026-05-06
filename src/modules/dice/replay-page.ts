@@ -70,7 +70,7 @@ function buildBubbleInner(entry: HistoryEntry): string {
       d.loser ? "loser" :
       d.value === sides ? "crit" :
       d.value === 1 ? "fail" : "";
-    return `<span class="die ${cls}"><img src="/suite/${imgFor(d.type)}.png" alt="">${d.value}</span>`;
+    return `<span class="die ${cls}"><img src="/${imgFor(d.type)}.png" alt="">${d.value}</span>`;
   }).join("");
   const mod = entry.modifier !== 0
     ? `<span class="mod">${entry.modifier > 0 ? `+${entry.modifier}` : entry.modifier}</span>`

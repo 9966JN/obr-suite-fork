@@ -166,7 +166,7 @@ function chipsHtml(dice: DieResult[]): string {
       d.value === 1 ? "fail" : "";
     parts.push(
       `<span class="die-chip ${cls}">` +
-      `<img src="/suite/${imgFor(d.type)}.png" alt="${escapeHtml(d.type)}" draggable="false">` +
+      `<img src="/${imgFor(d.type)}.png" alt="${escapeHtml(d.type)}" draggable="false">` +
       `<span>${d.value}</span>` +
       `</span>`,
     );
