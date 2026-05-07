@@ -79,7 +79,7 @@ async function showCard(cardId: string, roomId: string) {
 
   try {
     const res = await fetch(
-      `https://obr.dnd.center/characters/${encodeURIComponent(roomId)}/${encodeURIComponent(cardId)}/data.json`
+      `/characters/${encodeURIComponent(roomId)}/${encodeURIComponent(cardId)}/data.json`
     );
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const d = await res.json();
@@ -106,7 +106,7 @@ function render(d: any, cardId: string, roomId: string) {
   const lvl = d.total_level != null ? `Lv${d.total_level}` : "";
   const sub = [race, cls, lvl].filter(Boolean).join(" ");
 
-  const rawUrl = `https://obr.dnd.center/characters/${encodeURIComponent(roomId)}/${encodeURIComponent(cardId)}/`;
+  const rawUrl = `/characters/${encodeURIComponent(roomId)}/${encodeURIComponent(cardId)}/`;
 
   const hp = cs.hp || {};
   const hpStr = `${hp.current ?? "?"}/${hp.max ?? "?"}${hp.temp ? `+${hp.temp}` : ""}`;
