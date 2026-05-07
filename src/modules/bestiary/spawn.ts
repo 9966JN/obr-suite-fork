@@ -64,7 +64,7 @@ function getImageSize(url: string): Promise<{ w: number; h: number }> {
 }
 
 export async function spawnMonster(monster: ParsedMonster) {
-  const tokenUrl = monster.tokenUrl || `https://obr.dnd.center/5etools-img/bestiary/tokens/MM/Commoner.webp`;
+  const tokenUrl = monster.tokenUrl || `${location.origin}/5etools-img/bestiary/tokens/MM/Commoner.webp`;
 
   const slug = makeSlug(monster.source, monster.engName);
   await ensureSharedMonsterData(slug, getRawMonster(slug));
